@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grâce Ndudi - Network Engineer & Cybersecurity Analyst Portfolio</title>
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS - Animate On Scroll -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Thème Cyber-Premium */
+        :root {
+            --bg-dark: #0a0e27;
+            --bg-darker: #050812;
+            --cyan: #00d9ff;
+            --blue: #0080ff;
+            --purple: #a855f7;
+            --green: #10b981;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+            color: var(--text-primary);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Effet Typewriter */
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid var(--cyan);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 0.15em;
+            animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--cyan); }
+        }
+
+        /* Glow Effect */
+        .glow {
+            text-shadow: 0 0 10px var(--cyan), 0 0 20px var(--cyan);
+        }
+
+        /* Arrière-plan dynamique avec gradient */
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(168, 85, 247, 0.1) 50%, rgba(0, 128, 255, 0.1) 100%);
+        }
+
+        /* Cartes avec hover effect */
+        .card-hover {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .card-hover:hover {
+            border-color: var(--cyan);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        /* Timeline animée */
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--cyan);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 12px;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--cyan), transparent);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        /* Boutons animés */
+        .btn-cyber {
+            position: relative;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--cyan), var(--blue));
+            border: none;
+            border-radius: 5px;
+            color: var(--bg-dark);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .btn-cyber::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+
+        .btn-cyber:hover::before {
+            left: 0;
+        }
+
+        .btn-cyber:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+        }
+
+        /* Badges certifications */
+        .badge-cert {
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid var(--cyan);
+            border-radius: 20px;
+            padding: 10px 20px;
+            display: inline-block;
+            margin: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .badge-cert:hover {
+            background: rgba(0, 217, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 217, 255, 0.4);
+            transform: translateY(-3px);
+        }
+
+        /* Sections padding */
+        section {
+            padding: 80px 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Navigation sticky */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        /* Images responsives */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Grid skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        /* Contact section */
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--cyan);
+            color: var(--cyan);
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        .social-link:hover {
+            background: var(--cyan);
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.6);
+            transform: translateY(-5px);
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: revealAnimation 0.6s ease forwards;
+        }
+
+        @keyframes revealAnimation {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            section {
+                padding: 50px 15px;
+                min-height: auto;
+            }
+
+            .typewriter {
+                font-size: 1.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Particules de fond (subtil) */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--cyan);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-50px) translateX(30px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particules de fond -->
+    <div class="particles">
+        <div class="particle" style="width: 100px; height: 100px; top: 10%; left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="width: 150px; height: 150px; top: 60%; left: 80%; animation-delay: 2s;"></div>
+        <div class="particle" style="width: 80px; height: 80px; top: 80%; left: 5%; animation-delay: 4s;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="w-full">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold glow">
+                <i class="fas fa-shield-alt mr-2" style="color: var(--cyan);"></i>GRACE.DEV
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#accueil" class="text-text-secondary hover:text-cyan transition">Home</a>
+                <a href="#about" class="text-text-secondary hover:text-cyan transition">About</a>
+                <a href="#skills" class="text-text-secondary hover:text-cyan transition">Skills</a>
+                <a href="#experience" class="text-text-secondary hover:text-cyan transition">Experience</a>
+                <a href="#contact" class="text-text-secondary hover:text-cyan transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="accueil" class="gradient-bg relative pt-20">
+        <div class="relative z-10 max-w-7xl mx-auto text-center">
+            <!-- Photo profil si disponible -->
+            <div class="mb-8" data-aos="fade-up">
+                <img src="img/1772802203093.png" alt="Grâce Ndudi" class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto border-2" style="border-color: var(--cyan); box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);">
+            </div>
+
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 glow" data-aos="fade-down">
+                GRÂCE NDUDI MAKUMPA
+            </h1>
+
+            <!-- Typewriter Effect -->
+            <h2 class="typewriter text-xl md:text-2xl mb-8" style="color: var(--cyan); max-width: 800px; margin-left: auto; margin-right: auto;">
+                Network Engineer | Cybersecurity & Forensics Analyst | Embedded Systems & AI Specialist
+            </h2>
+
+            <p class="text-text-secondary text-lg mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                Passionate about securing digital infrastructures, technological innovation, and research in Artificial Intelligence. Based in Kinshasa, DRC.
+            </p>
+
+            <!-- Boutons d'action -->
+            <div class="flex flex-col md:flex-row justify-center gap-6 mb-12" data-aos="fade-up" data-aos-delay="400">
+                <a href="Cv/Grace_Ndudi_CV.pdf" download class="btn-cyber flex items-center justify-center">
+                    <i class="fas fa-download mr-2"></i> Download My CV
+                </a>
+                <a href="#about" class="btn-cyber flex items-center justify-center" style="background: linear-gradient(135deg, var(--purple), var(--blue));">
+                    <i class="fas fa-arrow-down mr-2"></i> Discover My World
+                </a>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="animate-bounce mt-16">
+                <i class="fas fa-chevron-down text-2xl" style="color: var(--cyan);"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- À PROPOS SECTION -->
+    <section id="about" class="gradient-bg">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center" data-aos="fade-up">
+                About Me
+            </h2>
+
+            <!-- Biographie -->
+            <div class="grid md:grid-cols-2 gap-12 mb-16">
+                <div data-aos="fade-right">
+                    <h3 class="text-2xl font-bold mb-6" style="color: var(--cyan);">
+                        <i class="fas fa-user mr-3"></i>Who Am I?
+                    </h3>
+                    <p class="text-text-secondary mb-4 leading-relaxed">
+                        Hello, I'm <strong>Grâce Ndudi Makumpa</strong>, born on <strong>April 19, 2003</strong> in <strong>Kinshasa, DRC</strong>.
+                        A network engineer and cybersecurity analyst passionate about protecting digital infrastructures and technological innovation.
+                    </p>
+                    <p class="text-text-secondary mb-4 leading-relaxed">
+                        My professional trajectory combines academic rigor with concrete projects in network security, system administration, and research in Embedded Systems and Artificial Intelligence.
+                    </p>
+                    <p class="text-text-secondary leading-relaxed">
+                        I firmly believe that cybersecurity is an essential pillar in an increasingly digital world. That's why I'm committed to developing robust and ethical solutions.
+                    </p>
+                </div>
+
+                <div data-aos="fade-left">
+                    <h3 class="text-2xl font-bold mb-6" style="color: var(--cyan);">
+                        <i class="fas fa-graduation-cap mr-3"></i>Academic Path
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="card-hover p-6 rounded-lg">
+                            <h4 class="font-bold mb-2">State Diploma in General Electricity</h4>
+                            <p class="text-text-secondary text-sm">Industrial Technical Institute of N'jili (ITI-N'jili)</p>
+                        </div>
+                        <div class="card-hover p-6 rounded-lg">
+                            <h4 class="font-bold mb-2">Bachelor's Degree in Electrical Engineering</h4>
+                            <p class="text-text-secondary text-sm">Applied Computer Science Orientation — Higher Institute of Applied Techniques of Ndolo (ISTA-NDOLO)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Univers Personnel -->
+            <h3 class="text-3xl font-bold mb-8 text-center" data-aos="fade-up">
+                <i class="fas fa-star mr-3" style="color: var(--purple);"></i>My Personal Universe
+            </h3>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Littérature -->
+                <div class="card-hover p-6 rounded-lg text-center" data-aos="fade-up">
+                    <i class="fas fa-book text-4xl mb-4" style="color: var(--cyan);"></i>
+                    <h4 class="font-bold mb-2">Literature</h4>
+                    <p class="text-text-secondary text-sm">My favorite novel: <strong>"Pride and Prejudice"</strong> by Jane Austen</p>
+                </div>
+
+                <!-- Gaming -->
+                <div class="card-hover p-6 rounded-lg text-center" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-gamepad text-4xl mb-4" style="color: var(--blue);"></i>
+                    <h4 class="font-bold mb-2">Gaming</h4>
+                    <p class="text-text-secondary text-sm">Fan of <strong>GTA San Andreas</strong>, <strong>PUBG</strong> and <strong>Call of Duty</strong></p>
+                </div>
+
+                <!-- Animation -->
+                <div class="card-hover p-6 rounded-lg text-center" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-film text-4xl mb-4" style="color: var(--purple);"></i>
+                    <h4 class="font-bold mb-2">Japanese Anime</h4>
+                    <p class="text-text-secondary text-sm mb-4">My favorite character:</p>
+                    <img src="img Anime/0eefa07bfa2e959d6861d6d0d2a73aca.jpg" alt="Personnage anime" class="w-full h-40 object-cover rounded-lg" style="border: 1px solid var(--cyan);">
+                </div>
+
+                <!-- Vie Privée -->
+                <div class="card-hover p-6 rounded-lg text-center" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-heart text-4xl mb-4" style="color: var(--purple);"></i>
+                    <h4 class="font-bold mb-2">Personal Life</h4>
+                    <p class="text-text-secondary text-sm mb-4">My happiness:</p>
+                    <img src="img IA/file_000000001670722f9fe325cf17a731b5.png" alt="Mon univers personnel" class="w-full h-40 object-cover rounded-lg" style="border: 1px solid var(--purple);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPÉTENCES SECTION -->
+    <section id="skills" class="gradient-bg">
+        <div class="max-w-7xl mx-auto w-full">
+            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center" data-aos="fade-up">
+                My Skills
+            </h2>
+
+            <div class="skills-grid">
+                <!-- Réseaux -->
+                <div class="card-hover p-8 rounded-lg" data-aos="fade-up">
+                    <div class="text-4xl mb-4" style="color: var(--cyan);">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Networks & Systems</h3>
+                    <ul class="text-text-secondary space-y-2 text-sm">
+                        <li><i class="fas fa-check mr-2" style="color: var(--green);"></i>Routing & Switching</li>
+                        <li><i class="fas fa-check mr-2" style="color: var(--green);"></i>Virtualization (VirtualBox, GNOME Boxes)</li>
+                        <li><i class="fas fa-check mr-2" style="color: var(--green);"></i>Linux Debian Administration</li>
+                        <li><i class="fas fa-check mr-2" style="color: var(--green);"></i>Windows Server & Active Directory</li>
+                        <li><i class="fas fa-check mr-2" style="color: var(--green);"></i>Protocols & Architecture</li>
+                    </ul>
+                </div>
+
+                <!-- Cybersécurité -->
+                <div class="card-hover p-8 rounded-lg" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-4xl mb-4" style="color: var(--blue);">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Cybersecurity & Forensics</h3>
+                    <ul class="text-text-secondary space-y-2 text-sm">
+                        <li><i class="fas fa-check mr-2" style="color: var(--green);"></i>Wireshark (Traffic Analysis)</li>
+                        <li><i class="fas fa-check mr-2" style="color: var(--green);"></i>Wazuh & Snort (Intrusion Detection)</li>
+                        <li><i class="fas fa-check mr-2" style="color: var(--green);"></i>Nmap/Zenmap (Network Scanning)</li>
+                        <li><i class="fas fa-check mr-2" style="color: var(--green);"></i>Forensics Analysis & Blue Teaming</li>
+                        <li><i class="fas fa-check mr-2" style="color: var(--green);"></i>Ethical Penetration Testing</li>
+                    </ul>
+                </div>
+
+                <!-- Développement -->
+                <div class="card-hover p-8 rounded-lg" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-4xl mb-4" style="color: var(--purple);">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Development & AI</h3>
+                    <ul class="text-text-secondary space-y-2 text-sm">
+                        <li><i class="fas fa-check mr-2" style="color: var(--green);"></i>Python & Bash Scripting</li>
+                        <li><i class="fas fa-check mr-2" style="color: var(--green);"></i>C/C++ & Java (JavaFX)</li>
+                        <li><i class="fas fa-check mr-2" style="color: var(--green);"></i>SQL & Databases</li>
+                        <li><i class="fas fa-check mr-2" style="color: var(--green);"></i>Embedded Systems</li>
+                        <li><i class="fas fa-check mr-2" style="color: var(--green);"></i>Artificial Intelligence Research</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPÉRIENCE SECTION -->
+    <section id="experience" class="gradient-bg">
+        <div class="max-w-4xl mx-auto w-full">
+            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center" data-aos="fade-up">
+                Parcours Professionnel
+            </h2>
+
+            <!-- Timeline -->
+            <div class="space-y-8">
+                <!-- Expérience actuelle -->
+                <div class="timeline-item card-hover p-6 rounded-lg" data-aos="fade-right">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-2xl font-bold" style="color: var(--cyan);">
+                                <i class="fas fa-briefcase mr-2"></i>Agent de Police Sanitaire & IT Support
+                            </h3>
+                            <p class="text-text-secondary font-semibold">Ministère de la Pêche et Élevage (RDC)</p>
+                        </div>
+                        <span class="badge-cert" style="border-color: var(--green); color: var(--green);">Actuellement</span>
+                    </div>
+                    <p class="text-text-secondary mt-3 text-sm leading-relaxed">
+                        Gestion et maintenance du parc informatique, support utilisateur technique, monitoring des systèmes critiques et application des protocoles technico-sanitaires.
+                    </p>
+                </div>
+
+                <!-- Stage Cisco -->
+                <div class="timeline-item card-hover p-6 rounded-lg" data-aos="fade-right" data-aos-delay="100">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-2xl font-bold" style="color: var(--blue);">
+                                <i class="fas fa-book mr-2"></i>IT Support (Stage)
+                            </h3>
+                            <p class="text-text-secondary font-semibold">Cisco Networking Academy</p>
+                        </div>
+                        <span class="badge-cert">Avril - Sep 2025</span>
+                    </div>
+                    <p class="text-text-secondary mt-3 text-sm leading-relaxed">
+                        Support technique avancé, déploiement et configuration d'équipements réseaux, assistance sur les architectures de laboratoires et optimisation du routage.
+                    </p>
+                </div>
+
+                <!-- Recherche IA -->
+                <div class="timeline-item card-hover p-6 rounded-lg" data-aos="fade-right" data-aos-delay="200">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-2xl font-bold" style="color: var(--purple);">
+                                <i class="fas fa-flask mr-2"></i>Chercheur en Systèmes Embarqués & IA
+                            </h3>
+                            <p class="text-text-secondary font-semibold">Cabinet d'Innovation et d'Entrepreneuriat</p>
+                        </div>
+                        <span class="badge-cert">Jan - Déc 2024</span>
+                    </div>
+                    <p class="text-text-secondary mt-3 text-sm leading-relaxed">
+                        Recherche et développement de solutions interconnectées, programmation de microcontrôleurs, intégration de modules d'IA légers et prototypage technique d'applications innovantes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS SECTION -->
+    <section id="certifications" class="gradient-bg">
+        <div class="max-w-7xl mx-auto w-full">
+            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center" data-aos="fade-up">
+                Certifications & Formations
+            </h2>
+
+            <div class="flex flex-wrap justify-center gap-6" data-aos="zoom-in">
+                <!-- Cisco IT Support -->
+                <div class="badge-cert text-center p-6 rounded-lg w-full sm:w-auto" data-aos="fade-up">
+                    <i class="fas fa-certificate text-3xl mb-3" style="color: var(--cyan);"></i>
+                    <h4 class="font-bold mt-2">Cisco IT Support</h4>
+                    <p class="text-text-secondary text-sm">Certifiée</p>
+                </div>
+
+                <!-- Cisco Network Technician -->
+                <div class="badge-cert text-center p-6 rounded-lg w-full sm:w-auto" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-certificate text-3xl mb-3" style="color: var(--cyan);"></i>
+                    <h4 class="font-bold mt-2">Cisco Network Technician</h4>
+                    <p class="text-text-secondary text-sm">Certifiée</p>
+                </div>
+
+                <!-- Google IT Support -->
+                <div class="badge-cert text-center p-6 rounded-lg w-full sm:w-auto" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-certificate text-3xl mb-3" style="color: var(--blue);"></i>
+                    <h4 class="font-bold mt-2">Google IT Support Professional</h4>
+                    <p class="text-text-secondary text-sm">Certifiée</p>
+                </div>
+
+                <!-- Fortinet Associate -->
+                <div class="badge-cert text-center p-6 rounded-lg w-full sm:w-auto" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-certificate text-3xl mb-3" style="color: var(--purple);"></i>
+                    <h4 class="font-bold mt-2">Fortinet Cybersecurity Associate</h4>
+                    <p class="text-text-secondary text-sm">Certifiée</p>
+                </div>
+
+                <!-- Fortinet Fundamentals -->
+                <div class="badge-cert text-center p-6 rounded-lg w-full sm:w-auto" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-certificate text-3xl mb-3" style="color: var(--purple);"></i>
+                    <h4 class="font-bold mt-2">Fortinet Fundamentals</h4>
+                    <p class="text-text-secondary text-sm">Certifiée</p>
+                </div>
+
+                <!-- Huawei En cours -->
+                <div class="badge-cert text-center p-6 rounded-lg w-full sm:w-auto" data-aos="fade-up" data-aos-delay="500" style="border-color: var(--green); opacity: 0.7;">
+                    <i class="fas fa-hourglass-half text-3xl mb-3" style="color: var(--green);"></i>
+                    <h4 class="font-bold mt-2">Huawei HCIA-Datacom</h4>
+                    <p class="text-text-secondary text-sm">En préparation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="gradient-bg">
+        <div class="max-w-4xl mx-auto w-full text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-8" data-aos="fade-up">
+                Travaillons Ensemble !
+            </h2>
+
+            <p class="text-text-secondary text-lg mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                Intéressée par une collaboration, un projet ou une discussion sur la cybersécurité et l'innovation technologique ?
+                N'hésitez pas à me contacter via les canaux ci-dessous.
+            </p>
+
+            <!-- Contact Info -->
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="card-hover p-6 rounded-lg" data-aos="fade-up">
+                    <i class="fas fa-envelope text-4xl mb-4" style="color: var(--cyan);"></i>
+                    <h3 class="font-bold mb-2">Email</h3>
+                    <a href="mailto:gracendudimakumpa@gmail.com" class="text-text-secondary hover:text-cyan transition">
+                        gracendudimakumpa@gmail.com
+                    </a>
+                </div>
+
+                <div class="card-hover p-6 rounded-lg" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-map-marker-alt text-4xl mb-4" style="color: var(--blue);"></i>
+                    <h3 class="font-bold mb-2">Localisation</h3>
+                    <p class="text-text-secondary">Kinshasa, République Démocratique du Congo</p>
+                </div>
+
+                <div class="card-hover p-6 rounded-lg" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-phone text-4xl mb-4" style="color: var(--purple);"></i>
+                    <h3 class="font-bold mb-2">Disponibilité</h3>
+                    <p class="text-text-secondary">Toujours disponible pour discuter de projets innovants</p>
+                </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="flex justify-center flex-wrap gap-4 mb-12" data-aos="zoom-in">
+                <a href="https://www.linkedin.com/in/grâce-ndudi" target="_blank" class="social-link" title="LinkedIn">
+                    <i class="fab fa-linkedin text-2xl"></i>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=Grâce%20Ndudi%20makumpa" target="_blank" class="social-link" title="Facebook">
+                    <i class="fab fa-facebook text-2xl"></i>
+                </a>
+                <a href="mailto:gracendudimakumpa@gmail.com" class="social-link" title="Email">
+                    <i class="fas fa-envelope text-2xl"></i>
+                </a>
+            </div>
+
+            <!-- CTA Button -->
+            <a href="Cv/Grace_Ndudi_CV.pdf" download class="btn-cyber text-lg px-8 py-4" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-download mr-2"></i> Télécharger mon CV complet
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black border-t border-cyan-500/20 py-8">
+        <div class="max-w-7xl mx-auto px-6 text-center text-text-secondary">
+            <p>© 2026 Grâce Ndudi Makumpa | Ingénieur Réseau & Analyste Cybersécurité</p>
+            <p class="text-sm mt-2">Conçu avec <i class="fas fa-heart" style="color: var(--cyan);"></i> et passion pour la technologie</p>
+        </div>
+    </footer>
+
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <script>
+        // Initialiser AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: false,
+        });
+
+        // Typewriter Effect - Plus sophistiqué
+        document.addEventListener('DOMContentLoaded', function() {
+            const typewriterElement = document.querySelector('.typewriter');
+            const text = typewriterElement.textContent;
+            typewriterElement.textContent = '';
+
+            let index = 0;
+            const typeSpeed = 50;
+
+            function typeChar() {
+                if (index < text.length) {
+                    typewriterElement.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(typeChar, typeSpeed);
+                }
+            }
+
+            typeChar();
+        });
+
+        // Navigation fluide
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Effets interactifs au scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = '0 0 30px rgba(0, 217, 255, 0.1)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Hover effect sur les cartes
+        const cards = document.querySelectorAll('.card-hover');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
